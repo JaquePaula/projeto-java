@@ -2,22 +2,15 @@ package Petshop.model;
 
 public class PetshopLoja extends Petshop {
 
-	private int quantidade;
 	private String nomeProduto;
+	private int total;
 
-	public PetshopLoja(int tipo, String animal, float preco, int quantidade, String nomeProduto) {
-		super(tipo, animal, preco);
-		this.quantidade = quantidade;
+	public PetshopLoja(int numero, float preco, int quantidade, String nomeProduto, int total) {
+		super(numero, preco, quantidade);
 		this.nomeProduto = nomeProduto;
+		this.total = total;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
 
 	public String getNomeProduto() {
 		return nomeProduto;
@@ -26,27 +19,34 @@ public class PetshopLoja extends Petshop {
 	public void setNomeProduto(String nomeProduto) {
 		this.nomeProduto = nomeProduto;
 	}
+	
 
-	public boolean Retirar(int valor) {
+	public int getTotal() {
+		return total;
+	}
 
-		if (this.getQuantidade() < valor) {
-			System.out.println("\n Quantidade Insuficiente!");
-			return false;
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+
+	public boolean retirar(int valor) {
+
+	if (this.getQuantidade() < valor) {
+		System.out.println("\n Quantidade Insuficiente!");
+		return false;
 		}
 
-		this.setQuantidade(this.getQuantidade() - valor);
-		return true;
-	}
+	this.setQuantidade(this.getQuantidade() - valor);
+	return true;
+}
 
-	public void Adicionar(int valor) {
-
-		this.setQuantidade(this.getQuantidade() + valor);
-
-	}
 
 	public void visualizar() {
 		super.visualizar();
-		System.out.println("Quantidade: " + this.quantidade);
+		System.out.println("Quantidade: " + this.getQuantidade());
+		System.out.println("Quantidade Máxima: " + this.total);
 		System.out.println("Nome do Produto: " + this.nomeProduto);
 	}
 }
